@@ -3,8 +3,8 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 from show_matched_features import show_matched_features
 
-img1_name = "cameraman.png"
-img2_name = "cameraman_rotsc.png"
+img1_name = r"images/peppers_color.png"
+img2_name = r"images/peppers_color_rotsc.png"
 MIN_MATCH_COUNT = 10
 
 img1 = cv.imread(img1_name, cv.IMREAD_GRAYSCALE)  # queryImage
@@ -58,7 +58,6 @@ plt.figure("Putative matches")
 plt.imshow(img3)
 plt.axis('off')
 plt.show()
-
 
 imfused = show_matched_features(img1, src_pts, img2, dst_pts, matchesMask)
 plt.figure("Inlier matches")
