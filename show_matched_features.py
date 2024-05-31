@@ -46,6 +46,11 @@ def show_matched_features(
     Returns:
         np.ndarray: output image
     """
+    # Convert to grayscale
+    if len(I1.shape) == 3:
+        I1 = cv.cvtColor(np.array(I1), cv.COLOR_RGB2GRAY)
+        I2 = cv.cvtColor(np.array(I2), cv.COLOR_RGB2GRAY)
+            
     # Pad the smaller image
     paddedSize = [max(I1.shape[0], I2.shape[0]), max(I1.shape[1], I2.shape[1])]
     I1pad = [paddedSize[0] - I1.shape[0], paddedSize[1] - I1.shape[1]]
@@ -58,10 +63,7 @@ def show_matched_features(
     I2 = padarray(I2, np.subtract(I2pad, I2pre), 0, 'post')
     
     # Fuse the images
-    if len(I1.shape) == 3:
-        imfused = np.dstack((I2[:, :, 0], I1[:, :, 0], I2[:, :, 0]))
-    else:
-        imfused = np.dstack((I2, I1, I2))
+    imfused = np.dstack((I2, I1, I2))
 
     # Offset the matched keypoints
     offset1 = np.flip(I1pre).tolist()
