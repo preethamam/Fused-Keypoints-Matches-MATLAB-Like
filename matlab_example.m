@@ -3,8 +3,11 @@ clc; close all; clear;
 % I1 = imread("cameraman.tif");
 % I2 = imresize(imrotate(I1,-20), 1.2);
 
-I1 = imread("cameraman.png");
-I2 = imread("cameraman_rotsc.png");
+% I1 = imread("cameraman.png");
+% I2 = imread("cameraman_rotsc.png");
+
+I1 = imread("peppers.png");
+I2 = imresize(imrotate(I1,-20), 1.2);
 
 % Detect SURF features.
 points1 = detectSURFFeatures(I1);
